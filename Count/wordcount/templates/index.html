@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Word Count Web App</title>
+</head>
+<body>
+    <h1>Word Count App</h1>
+
+    <form method="POST" action="{% url 'load_file' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file">Загрузить файл:</label>
+        <input type="file" name="file" id="file">
+        <br>
+        <input type="submit" value="Загрузить">
+    </form>
+
+    <form method="POST" action="{% url 'word_count' %}">
+        {% csrf_token %}
+        <label for="word">Запросить количество слов:</label>
+        <input type="text" name="word" id="word">
+        <br>
+        <input type="submit" value="Подсчитать">
+    </form>
+
+    <form method="POST" action="{% url 'clear_memory' %}">
+        {% csrf_token %}
+        <input type="submit" value="Очистить данные">
+    </form>
+</body>
+</html>
